@@ -1,29 +1,51 @@
 # =============================================================================
-# YOUR TARGET FIRMS
-# =============================================================================
-# The tokens/URLs below are PLACEHOLDERS — replace them with the real values
-# you find via DevTools (see README "Adding a firm"), or send me your shortlist
-# and I'll fill in the exact endpoints.
-#
-# Three supported ATS types:
-#   ats: greenhouse   ->  needs `token`  (from boards-api.greenhouse.io/v1/boards/<TOKEN>/jobs)
-#   ats: lever        ->  needs `token`  (from api.lever.co/v0/postings/<TOKEN>)
-#   ats: workday      ->  needs `url`    (the full .../wday/cxs/<tenant>/<site>/jobs endpoint)
-#
-# When you run it, each firm prints its role count — a count of 0 or an error
-# means the token/url is wrong and needs fixing.
+# YOUR TARGET FIRMS — confirmed & ready (10 firms)
+# Endpoints verified from public job boards, July 2026.
+# Add more below as we confirm them (same format).
 # =============================================================================
 
-# ---- Boutiques (often Greenhouse / Lever) ----
-- name: Example Boutique (Greenhouse)
-  ats: greenhouse
-  token: REPLACE_ME
-
-- name: Example Boutique (Lever)
-  ats: lever
-  token: REPLACE_ME
-
-# ---- Bulge bracket / PE (often Workday) ----
-- name: Example Bank (Workday)
+# ---- Private equity ----
+- name: Blackstone
   ats: workday
-  url: https://REPLACE_ME.wd1.myworkdayjobs.com/wday/cxs/REPLACE_ME/External/jobs
+  url: https://blackstone.wd1.myworkdayjobs.com/wday/cxs/blackstone/Blackstone_Campus_Careers/jobs
+
+- name: KKR
+  ats: greenhouse
+  token: kkr
+
+- name: Carlyle
+  ats: workday
+  url: https://carlyle.wd1.myworkdayjobs.com/wday/cxs/carlyle/Carlyle/jobs
+
+- name: Apollo
+  ats: workday
+  url: https://athene.wd5.myworkdayjobs.com/wday/cxs/athene/Apollo_Careers/jobs
+
+- name: TPG
+  ats: greenhouse
+  token: tpgcareers
+
+- name: General Atlantic (main)
+  ats: greenhouse
+  token: generalatlantic
+
+- name: General Atlantic (campus)
+  ats: greenhouse
+  token: gacampus
+
+- name: Warburg Pincus          # note: mostly full-time Analyst roles, few internships
+  ats: greenhouse
+  token: warburgpincusllc
+
+# ---- Bulge bracket & boutiques ----
+- name: Morgan Stanley
+  ats: workday
+  url: https://ms.wd5.myworkdayjobs.com/wday/cxs/ms/External/jobs
+
+- name: PJT Partners
+  ats: workday
+  url: https://pjtpartners.wd1.myworkdayjobs.com/wday/cxs/pjtpartners/Students/jobs
+
+- name: Houlihan Lokey
+  ats: workday
+  url: https://hl.wd1.myworkdayjobs.com/wday/cxs/hl/Campus/jobs
