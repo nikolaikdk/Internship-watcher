@@ -1,0 +1,29 @@
+# =============================================================================
+# YOUR TARGET FIRMS
+# =============================================================================
+# The tokens/URLs below are PLACEHOLDERS — replace them with the real values
+# you find via DevTools (see README "Adding a firm"), or send me your shortlist
+# and I'll fill in the exact endpoints.
+#
+# Three supported ATS types:
+#   ats: greenhouse   ->  needs `token`  (from boards-api.greenhouse.io/v1/boards/<TOKEN>/jobs)
+#   ats: lever        ->  needs `token`  (from api.lever.co/v0/postings/<TOKEN>)
+#   ats: workday      ->  needs `url`    (the full .../wday/cxs/<tenant>/<site>/jobs endpoint)
+#
+# When you run it, each firm prints its role count — a count of 0 or an error
+# means the token/url is wrong and needs fixing.
+# =============================================================================
+
+# ---- Boutiques (often Greenhouse / Lever) ----
+- name: Example Boutique (Greenhouse)
+  ats: greenhouse
+  token: REPLACE_ME
+
+- name: Example Boutique (Lever)
+  ats: lever
+  token: REPLACE_ME
+
+# ---- Bulge bracket / PE (often Workday) ----
+- name: Example Bank (Workday)
+  ats: workday
+  url: https://REPLACE_ME.wd1.myworkdayjobs.com/wday/cxs/REPLACE_ME/External/jobs
