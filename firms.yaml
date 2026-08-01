@@ -1,5 +1,5 @@
 # =============================================================================
-# YOUR TARGET FIRMS — confirmed & ready (10 firms)
+# YOUR TARGET FIRMS — confirmed & ready (11 firms)
 # Endpoints verified from public job boards, July 2026.
 # Add more below as we confirm them (same format).
 # =============================================================================
@@ -36,6 +36,11 @@
 - name: Warburg Pincus          # note: mostly full-time Analyst roles, few internships
   ats: greenhouse
   token: warburgpincusllc
+
+- name: EQT                     # Greenhouse's EU-hosted board
+  ats: greenhouse
+  token: eqtpartners
+  region: eu
 
 # ---- Bulge bracket & boutiques ----
 - name: Morgan Stanley
