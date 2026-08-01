@@ -60,18 +60,30 @@ def _low(s):
 
 def fetch_greenhouse(firm):
     token = firm["token"]
-    url = f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs"
-    r = requests.get(url, params={"content": "false"}, headers=HEADERS, timeout=REQUEST_TIMEOUT)
-    r.raise_for_status()
-    out = []
-    for j in r.json().get("jobs", []):
-        out.append({
-            "id": f"gh-{token}-{j.get('id')}",
-            "title": j.get("title", ""),
-            "location": (j.get("location") or {}).get("name", ""),
-            "url": j.get("absolute_url", ""),
-        })
-    return out
+    # Greenhouse serves EU-resident boards from a parallel host. We try both so
+    # a firm works whichever region it's on. Set `region: eu` to try EU first.
+    hosts = ["boards-api.greenhouse.io", "boards-api.eu.greenhouse.io"]
+    if firm.get("region") == "eu":
+        hosts.reverse()
+    last_err = None
+    for host in hosts:
+        try:
+            r = requests.get(f"https://{host}/v1/boards/{token}/jobs",
+                             params={"content": "false"}, headers=HEADERS,
+                             timeout=REQUEST_TIMEOUT)
+            r.raise_for_status()
+            out = []
+            for j in r.json().get("jobs", []):
+                out.append({
+                    "id": f"gh-{token}-{j.get('id')}",
+                    "title": j.get("title", ""),
+                    "location": (j.get("location") or {}).get("name", ""),
+                    "url": j.get("absolute_url", ""),
+                })
+            return out
+        except Exception as e:
+            last_err = e
+    raise last_err
 
 
 def fetch_lever(firm):
